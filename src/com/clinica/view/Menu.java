@@ -161,7 +161,7 @@ public class Menu {
     }
 
     private void listarTutores(ArrayList<Tutor> tutores, ArrayList<Animal> animais){
-        System.out.print("\n> TUTORES");
+        System.out.print("\n>> TUTORES E SEUS ANIMAIS");
         for(Tutor t : tutores){
             System.out.println("\n"+t.getNome()+" - "+t.getEmail());
             exibirAnimaisDoTutor(t, animais);
@@ -218,6 +218,21 @@ public class Menu {
         System.out.println("| 3. Ver meu perfil               |");
         System.out.println("| 0. Sair                         |");
         System.out.println("|_________________________________|");
+    }
+
+    private void listarColaboradores(ArrayList<Colaborador> colaboradores){
+        System.out.println("\n>> GROOMERS");
+        for(Colaborador c : colaboradores){
+            if(c instanceof Groomer){
+                System.out.println("\n"+c.getNome());
+            }
+        }
+        System.out.println("\n>> VETERINÁRIOS");
+        for(Colaborador c : colaboradores){
+            if(c instanceof Veterinario){
+                System.out.println("\n"+c.getNome());
+            }
+        }
     }
 
     //ANIMAL
@@ -368,8 +383,9 @@ public class Menu {
                 case 3:
                     System.out.println("\n----- TODOS OS CADASTROS DO SISTEMA -----");
                     listarTutores(tutores, animais);
-                    System.out.println("\n> ANIMAIS PARA ADOÇÃO");
+                    System.out.println("\n>> ANIMAIS PARA ADOÇÃO");
                     exibirAnimaisAdocao(animais);
+                    listarColaboradores(colaboradores);
                     break;
                 default:
                     System.out.println("Opção inválida. Tente novamente.");
