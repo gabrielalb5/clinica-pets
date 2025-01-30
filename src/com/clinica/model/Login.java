@@ -13,11 +13,11 @@ public class Login {
         this.colaboradores = colaboradores;
     }
 
-    public boolean autenticar(String cpf, String senha, String perfil){
+    public boolean autenticar(String login, String senha, String perfil){
         boolean exists = false;
         if(perfil.equals("COLABORADOR")){
             for(Colaborador c : colaboradores){
-                if(c.getCpf().equals(cpf)){
+                if(c.getCpf().equals(login)){
                     if(c.getSenha().equals(senha)){
                         exists = true;
                     }
@@ -25,7 +25,7 @@ public class Login {
             }
         }else if(perfil.equals("TUTOR")){
             for(Tutor t : tutores){
-                if(t.getCpf().equals(cpf)){
+                if(t.getCpf().equals(login) || t.getEmail().equalsIgnoreCase(login)){
                     if(t.getSenha().equals(senha)){
                         exists = true;
                     }

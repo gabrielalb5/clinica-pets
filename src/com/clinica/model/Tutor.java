@@ -34,4 +34,17 @@ public class Tutor {
     public String getEndereco() {
         return endereco;
     }
+
+    public void exibirPerfil(){
+        System.out.println("_________________________________________");
+        System.out.println("|                                        |");
+        System.out.println("|            Perfil do Tutor             |");
+        System.out.println("|________________________________________|");
+        System.out.println("|                                        |");
+        System.out.println("| Nome: " + getNome());
+        System.out.println("| Email: " + getEmail());
+        System.out.println("| CPF: " + getCpf());
+        System.out.println("| Endereço: " + getEndereco());
+        System.out.println("|________________________________________");
+    }
 }

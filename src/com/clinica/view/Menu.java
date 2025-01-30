@@ -76,8 +76,8 @@ public class Menu {
             System.out.println("|                       |");
             System.out.println("| > Tutor de Pet        |");
             System.out.println("|                       |");
-            System.out.println("| 1. Realizar cadastro  |");
-            System.out.println("| 2. Realizar login     |");
+            System.out.println("| 1. Realizar login     |");
+            System.out.println("| 2. Realizar cadastro  |");
             System.out.println("| 0. Voltar             |");
             System.out.println("|_______________________|");
             System.out.print("\n> Escolha uma opção: ");
@@ -86,6 +86,25 @@ public class Menu {
 
             switch (opcao) {
                 case 1:
+                    System.out.println("\nLOGIN DE TUTOR");
+                    clearBuffer(leitura);
+                    System.out.print("Login (CPF ou E-mail): ");
+                    String identificador = leitura.nextLine();
+                    System.out.print("Senha: ");
+                    String senha = leitura.nextLine();
+                    boolean saida = login.autenticar(identificador, senha, "TUTOR");
+                    if(saida){
+                        System.out.println("\nLogin realizado com sucesso!");
+                        for(Tutor tutor : tutores){
+                            if(tutor.getCpf().equals(identificador) || tutor.getEmail().equalsIgnoreCase(identificador)){
+                                menuTutorLogado(tutor);
+                            }
+                        }
+                    }else{
+                        System.out.println("Credenciais inválidas");
+                    }
+                    break;
+                case 2:
                     Tutor novoTutor = lerTutor();
                     cadastro.cadastrarTutor(novoTutor);
                     System.out.println("Tutor cadastrado com sucesso!");
@@ -105,27 +124,6 @@ public class Menu {
                                 break;
                         }
                     }while(opcao<0 || opcao>1);
-                    break;
-                case 2:
-                    System.out.println("\nLOGIN DE TUTOR");
-                    clearBuffer(leitura);
-                    System.out.print("CPF: ");
-                    String cpf = leitura.nextLine();
-                    System.out.print("Senha: ");
-                    String senha = leitura.nextLine();
-                    boolean saida = login.autenticar(cpf, senha, "TUTOR");
-                    if(saida){
-                        System.out.println("Login realizado com sucesso!");
-                        for(Tutor tutor : tutores){
-                            if(tutor.getCpf().equals(cpf)){
-                                System.out.println("Olá, "+tutor.getNome());
-                                exibirAnimaisDoTutor(tutor,animais);
-                                //menuTutorLogado();
-                            }
-                        }
-                    }else{
-                        System.out.println("Credenciais inválidas");
-                    }
                     break;
                 default:
                     System.out.println("Opção inválida");
@@ -168,6 +166,38 @@ public class Menu {
         }
     }
 
+    public void menuTutorLogado(Tutor tutorLogado){
+        int opcao;
+        do{
+            System.out.println("\n> Tutor Logado - "+tutorLogado.getNome());
+            System.out.println("_________________________________________");
+            System.out.println("|                                        |");
+            System.out.println("| 1. Exibir perfil                       |");
+            System.out.println("| 2. Cadastrar novo pet                  |");
+            System.out.println("| 3. Animais disponíveis para adoção     |");
+            System.out.println("| 4. Ver seus pets                       |");
+            System.out.println("| 5. Atualizar estado do pet             |");
+            System.out.println("| 0. Sair                                |");
+            System.out.println("|________________________________________|");
+            System.out.print("\n> Escolha uma opção: ");
+
+            opcao = leitura.nextInt();
+
+            switch(opcao){
+                case 1:
+                    tutorLogado.exibirPerfil();
+                    break;
+                case 0:
+                    System.out.println("Saindo do perfil...");
+                    break;
+                default:
+                    System.out.println("Opção inválida");
+                    break;
+            }
+
+        }while(opcao!=0);
+    }
+    
     //COLABORADOR
     public void menuColaborador(ArrayList<Colaborador> colaboradores){
         System.out.println("\nLOGIN DE COLABORADOR");
@@ -179,7 +209,7 @@ public class Menu {
         boolean saida = login.autenticar(cpf, senha, "COLABORADOR");
         
         if(saida){
-            System.out.println("Login realizado com sucesso!");
+            System.out.println("\nLogin realizado com sucesso!");
             for(Colaborador colaborador : colaboradores){
                 if(colaborador.getCpf().equals(cpf)){
                     if (colaborador instanceof Groomer) {
@@ -195,10 +225,8 @@ public class Menu {
     }
 
     public void menuGroomer(Groomer groomer){
-        System.out.println("Olá, "+groomer.getNome());
+        System.out.println("\n> Groomer Logado - "+groomer.getNome());
         System.out.println("__________________________________");
-        System.out.println("|                                 |");
-        System.out.println("| > Groomer                       |");
         System.out.println("|                                 |");
         System.out.println("| 1. Ver pets para banho ou tosa  |");
         System.out.println("| 2. Atender próximo pet          |");
@@ -208,10 +236,8 @@ public class Menu {
     }
 
     public void menuVeterinario(Veterinario veterinario){
-        System.out.println("Olá, "+veterinario.getNome());
+        System.out.println("\n> Veterinário Logado - "+veterinario.getNome());
         System.out.println("__________________________________");
-        System.out.println("|                                 |");
-        System.out.println("| > Veterinário                   |");
         System.out.println("|                                 |");
         System.out.println("| 1. Ver lista de espera          |");
         System.out.println("| 2. Tratar próximo pet           |");
