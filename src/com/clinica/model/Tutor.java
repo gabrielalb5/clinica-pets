@@ -41,10 +41,10 @@ public class Tutor {
         System.out.println("|            Perfil do Tutor             |");
         System.out.println("|________________________________________|");
         System.out.println("|                                        |");
-        System.out.println("| Nome: " + getNome());
-        System.out.println("| Email: " + getEmail());
-        System.out.println("| CPF: " + getCpf());
-        System.out.println("| Endereço: " + getEndereco());
-        System.out.println("|________________________________________");
+        System.out.printf("| %-4s: %-32s |\n", "Nome", getNome());
+        System.out.printf("| %-5s: %-31s |\n", "Email", getEmail());
+        System.out.printf("| %-3s: %-33s |\n", "CPF", getCpf());
+        System.out.printf("| %-8s: %-28s |\n", "Endereço", getEndereco());
+        System.out.println("|________________________________________|");
     }
 }

@@ -97,7 +97,7 @@ public class Menu {
                         System.out.println("\nLogin realizado com sucesso!");
                         for(Tutor tutor : tutores){
                             if(tutor.getCpf().equals(identificador) || tutor.getEmail().equalsIgnoreCase(identificador)){
-                                menuTutorLogado(tutor);
+                                menuTutorLogado(tutor, animais);
                             }
                         }
                     }else{
@@ -166,8 +166,9 @@ public class Menu {
         }
     }
 
-    public void menuTutorLogado(Tutor tutorLogado){
+    public void menuTutorLogado(Tutor tutorLogado, ArrayList<Animal> animais){
         int opcao;
+        
         do{
             System.out.println("\n> Tutor Logado - "+tutorLogado.getNome());
             System.out.println("_________________________________________");
@@ -175,8 +176,10 @@ public class Menu {
             System.out.println("| 1. Exibir perfil                       |");
             System.out.println("| 2. Cadastrar novo pet                  |");
             System.out.println("| 3. Animais disponíveis para adoção     |");
-            System.out.println("| 4. Ver seus pets                       |");
-            System.out.println("| 5. Atualizar estado do pet             |");
+            if(tutorTemAnimal(tutorLogado, animais)){
+                System.out.println("| 4. Ver seus pets                       |");
+                System.out.println("| 5. Atualizar estado do pet             |");
+            }
             System.out.println("| 0. Sair                                |");
             System.out.println("|________________________________________|");
             System.out.print("\n> Escolha uma opção: ");
@@ -196,6 +199,16 @@ public class Menu {
             }
 
         }while(opcao!=0);
+    }
+
+    private boolean tutorTemAnimal(Tutor tutor, ArrayList<Animal> animais){
+        boolean temPet = false;
+        for(Animal pet : animais){
+            if(pet.getTutor() != null && pet.getTutor().equals(tutor)){
+                temPet = true;
+            }
+        }
+        return temPet;
     }
     
     //COLABORADOR
@@ -247,16 +260,16 @@ public class Menu {
     }
 
     private void listarColaboradores(ArrayList<Colaborador> colaboradores){
-        System.out.println("\n>> GROOMERS");
+        System.out.println("\n>> GROOMERS\n");
         for(Colaborador c : colaboradores){
             if(c instanceof Groomer){
-                System.out.println("\n"+c.getNome());
+                System.out.println(c.getNome()+" - "+c.getCpf());
             }
         }
-        System.out.println("\n>> VETERINÁRIOS");
+        System.out.println("\n>> VETERINÁRIOS\n");
         for(Colaborador c : colaboradores){
             if(c instanceof Veterinario){
-                System.out.println("\n"+c.getNome());
+                System.out.println(c.getNome()+" - "+c.getCpf());
             }
         }
     }
@@ -308,24 +321,24 @@ public class Menu {
     }
 
     private void exibirAnimaisDoTutor(Tutor tutor, ArrayList<Animal> animais){
-        if(animais.isEmpty()){
-            System.out.println("Não há animais cadastrados");
-        }else{
+        if(tutorTemAnimal(tutor, animais)){
             for(Animal pet : animais){
-                if(pet.getTutor().equals(tutor)){
-                    System.out.println(pet.getNome());
+                if(pet.getTutor() != null && pet.getTutor().equals(tutor)){
+                    System.out.println(pet.getNome()+" - "+pet.getClass().getSimpleName()+" de "+pet.getIdade()+" anos");
                 }
             }
+        }else{
+            System.out.println("Não há animais cadastrados");
         }
     }
 
     private void exibirAnimaisAdocao(ArrayList<Animal> animais){
         if(animais.isEmpty()){
-            System.out.println("Não há animais cadatsrados");
+            System.out.println("Não há animais cadastrados");
         }else{
             for(Animal pet : animais){
-                if(pet.getTutor().equals(null)){
-                    System.out.println(pet.getNome());
+                if(pet.getTutor() == null){
+                    System.out.println(pet.getNome()+" - "+pet.getClass().getSimpleName()+" de "+pet.getIdade()+" anos");
                 }
             }
         }
@@ -347,7 +360,6 @@ public class Menu {
             System.out.println("2. Coelho");
             System.out.println("3. Gato");
             System.out.println("4. Jabuti");
-            System.out.println("5. Pássaro");
             System.out.println("5. Pássaro");
             System.out.print("Indique a espécie (1-5): ");
             especie = leitura.nextInt();
