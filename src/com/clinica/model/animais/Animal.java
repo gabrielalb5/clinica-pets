@@ -40,4 +40,8 @@ public abstract class Animal implements ICaracteristicas {
     public Tutor getTutor() {
         return tutor;
     }
+
+    public void setTutor(Tutor tutor) {
+        this.tutor = tutor;
+    }
 }

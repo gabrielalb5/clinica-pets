@@ -190,6 +190,47 @@ public class Menu {
                 case 1:
                     tutorLogado.exibirPerfil();
                     break;
+                case 2:
+                    Animal novoAnimal = lerAnimalComTutor(tutorLogado);
+                    cadastro.cadastrarAnimal(novoAnimal);
+                    System.out.println("Pet cadastrado com sucesso!");
+                    break;
+                case 3:
+                    int opcaoAdocao;
+                    System.out.println("\nANIMAIS DISPONÍVEIS PARA ADOÇÃO");
+                    exibirAnimaisAdocao(animais);
+                    if(temAnimaisDisponiveis(animais)){
+                        System.out.print("\nDeseja adotar algum pet? (1 - Sim | 0 - Não): ");
+                        opcaoAdocao = leitura.nextInt();
+                        
+                        while (opcaoAdocao == 1) {
+                            int id;
+                            boolean disponivel;
+                            do {
+                                System.out.print("Digite o id do pet que deseja adotar: ");
+                                id = leitura.nextInt();
+                                disponivel = disponivelAdotar(animais, id);
+                            } while (!disponivel);
+                            
+                            adotar(tutorLogado, animais, id);
+                            opcaoAdocao = 0;
+                        }
+                    }
+                    break;
+                case 4:
+                    if(!tutorTemAnimal(tutorLogado, animais)) {
+                        System.out.println("Opção inválida");
+                        break;
+                    }
+                    System.out.println("SEUS PETS");
+                    exibirAnimaisDoTutor(tutorLogado, animais);
+                    break;
+                case 5:
+                    if(!tutorTemAnimal(tutorLogado, animais)) {
+                        System.out.println("Opção inválida");
+                        break;
+                    }
+                    break;
                 case 0:
                     System.out.println("Saindo do perfil...");
                     break;
@@ -211,6 +252,15 @@ public class Menu {
         return temPet;
     }
     
+    private void adotar(Tutor tutor, ArrayList<Animal> animais, int id){
+        for(Animal pet : animais){
+            if(pet.getTutor() == null && pet.getId() == id){
+                pet.setTutor(tutor);
+                System.out.println("Você adotou "+pet.getNome()+"! ("+pet.getClass().getSimpleName()+")");
+            }
+        }
+    }
+
     //COLABORADOR
     public void menuColaborador(ArrayList<Colaborador> colaboradores){
         System.out.println("\nLOGIN DE COLABORADOR");
@@ -335,13 +385,25 @@ public class Menu {
     private void exibirAnimaisAdocao(ArrayList<Animal> animais){
         if(animais.isEmpty()){
             System.out.println("Não há animais cadastrados");
-        }else{
+        }else if(temAnimaisDisponiveis(animais)){
             for(Animal pet : animais){
                 if(pet.getTutor() == null){
-                    System.out.println(pet.getNome()+" - "+pet.getClass().getSimpleName()+" de "+pet.getIdade()+" anos");
+                    System.out.println(pet.getNome()+" - "+pet.getClass().getSimpleName()+" de "+pet.getIdade()+" anos (ID: "+pet.getId()+")");
                 }
             }
+        }else{
+            System.out.println("Não há animais disponíveis para adotar");
         }
+    }
+
+    private boolean temAnimaisDisponiveis(ArrayList<Animal> animais){
+        boolean disponivel = false;
+        for(Animal pet : animais){
+            if(pet.getTutor() == null){
+                disponivel = true;
+            }
+        }
+        return disponivel;
     }
 
     private Animal lerAnimalAdocao(){
@@ -386,6 +448,16 @@ public class Menu {
             }
         }while(especie>5 || especie<1);
         return a;
+    }
+
+    private boolean disponivelAdotar(ArrayList<Animal> animais, int id){
+        boolean disponivel = false;
+        for(Animal pet : animais){
+            if(pet.getTutor() == null && pet.getId() == id){
+                disponivel = true;
+            }
+        }
+        return disponivel;
     }
 
     //ADMINISTRADOR
