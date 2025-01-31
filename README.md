@@ -40,7 +40,7 @@ git clone https://github.com/seu-usuario/projeto-inoo.git
 
 ###
 
-<p align="left">2. Abra o projeto no VS Code ou em uma IDE compatível</p>
+<p align="left">2. Abra o projeto no VS Code ou em uma IDE compatível.</p>
 
 ###
 
