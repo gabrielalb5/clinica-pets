@@ -20,7 +20,7 @@ public class Main {
 
         Colaborador g1 = new Groomer("Gabriel", "450", "1234");
         Colaborador v1 = new Veterinario("Caio", "400", "1234");
-        Tutor t1 = new Tutor("Otavio", "otavio@mail.com", "0665", "Boa esperança", "6666");
+        Tutor t1 = new Tutor("Otavio", "otavio@mail.com", "0665", "Boa Esperança", "6666");
         Tutor t2 = new Tutor("Lucas", "lucas@mail.com", "5678", "São Paulo", "1234");
         Tutor t3 = new Tutor("Mariana", "mariana@mail.com", "9876", "Rio de Janeiro", "4321");
         Tutor t4 = new Tutor("Julia", "julia@mail.com", "2468", "Belo Horizonte", "8765");
