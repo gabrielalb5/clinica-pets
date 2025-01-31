@@ -52,7 +52,7 @@ git clone https://github.com/seu-usuario/projeto-inoo.git
 
 ###
 
-<h3 align="left">🧑‍💻 Autores</h3>
+<h2 align="left">🧑‍💻 Autores</h2>
 
 ###
 
