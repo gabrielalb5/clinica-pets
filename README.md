@@ -14,7 +14,7 @@
 
 ###
 
-<p align="left">• Cadastro de donos, funcionários e animais<br><br>• Adoção de animais<br><br>• Atendimento veterinário<br><br>• Serviços de banho e tosa para pets<br><br>• Relatórios de atendimentos<br><br>• Listagem de funcionários, donos e animais<br><br>• Atualização de status de saúde e higiene dos pets</p>
+<p align="left">     • Cadastro de donos, funcionários e animais<br><br>• Adoção de animais<br><br>• Atendimento veterinário<br><br>• Serviços de banho e tosa para pets<br><br>• Relatórios de atendimentos<br><br>• Listagem de funcionários, donos e animais<br><br>• Atualização de status de saúde e higiene dos pets</p>
 
 ###
 
