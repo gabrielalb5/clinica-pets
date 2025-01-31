@@ -6,8 +6,8 @@ public abstract class Animal implements ICaracteristicas {
     protected int id;
     protected String nome;
     protected int idade;
-    protected boolean saudavel;
     protected boolean limpo;
+    protected boolean saudavel;
     protected Tutor tutor;
 
     private static int contador = 0;
@@ -16,6 +16,8 @@ public abstract class Animal implements ICaracteristicas {
         this.id = contador++;
         this.nome = nome;
         this.idade = idade;
+        this.limpo = true;
+        this.saudavel = true;
     }
 
     public Animal(String nome, int idade, Tutor tutor) {
@@ -23,6 +25,8 @@ public abstract class Animal implements ICaracteristicas {
         this.nome = nome;
         this.idade = idade;
         this.tutor = tutor;
+        this.limpo = true;
+        this.saudavel = true;
     }
 
     public int getId() {
@@ -43,5 +47,21 @@ public abstract class Animal implements ICaracteristicas {
 
     public void setTutor(Tutor tutor) {
         this.tutor = tutor;
+    }
+
+    public boolean isLimpo() {
+        return limpo;
+    }
+
+    public boolean isSaudavel() {
+        return saudavel;
+    }
+
+    public void setLimpo(boolean limpo) {
+        this.limpo = limpo;
+    }
+
+    public void setSaudavel(boolean saudavel) {
+        this.saudavel = saudavel;
     }
 }

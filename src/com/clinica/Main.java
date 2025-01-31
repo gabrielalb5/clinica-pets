@@ -13,6 +13,9 @@ public class Main {
         ArrayList<Animal> animais = new ArrayList<>();
         ArrayList<Colaborador> colaboradores = new ArrayList<>();
 
+        ArrayList<Animal> animaisSujos = new ArrayList<>();
+        ArrayList<Animal> animaisDoentes = new ArrayList<>();
+
         Menu menu = new Menu(tutores, animais, colaboradores);
 
         Colaborador g1 = new Groomer("Gabriel", "450", "1234");
@@ -33,6 +36,6 @@ public class Main {
         animais.add(a1);
         animais.add(a2);
 
-        menu.menuInicial(tutores, colaboradores, animais);
+        menu.menuInicial(tutores, colaboradores, animais, animaisSujos, animaisDoentes);
     }
 }

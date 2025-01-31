@@ -1,6 +1,6 @@
 package com.clinica.model.colaboradores;
 
-public abstract class Colaborador {
+public abstract class Colaborador implements IPerfil {
     protected String nome;
     protected String cpf;
     protected String senha;
