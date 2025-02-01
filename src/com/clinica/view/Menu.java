@@ -318,6 +318,8 @@ public class Menu {
                                 animalParaAlterar.setSaudavel(false);
                                 animaisDoentes.add(animalParaAlterar);
                                 break;
+                            case 0:
+                                break;
                             default:
                                 System.out.println("\nOpção inválida");
                                 break;
@@ -421,8 +423,8 @@ public class Menu {
                         } else {
                             System.out.println("\nVocê deu banho em " + pet.getNome());
                         }
-                        pet.exibirFoto();
                         pet.som();
+                        pet.exibirFoto();
                     }
                     break;
                 case 3:
@@ -467,8 +469,8 @@ public class Menu {
                         Animal pet = animaisDoentes.remove(0);
                         pet.setSaudavel(true);
                         System.out.println("\nVocê tratou " + pet.getNome() + "!");
-                        pet.exibirFoto();
                         pet.som();
+                        pet.exibirFoto();
                     }
                     break;
                 case 3:
@@ -542,7 +544,7 @@ public class Menu {
         if(tutorTemAnimal(tutor, animais)){
             for(Animal pet : animais){
                 if(pet.getTutor() != null && pet.getTutor().equals(tutor)){
-                    System.out.print("\n" + pet.getNome()+" - "+pet.getClass().getSimpleName()+" de "+pet.getIdade()+" anos (ID: "+pet.getId()+") - ");
+                    System.out.print(pet.getNome()+" - "+pet.getClass().getSimpleName()+" de "+pet.getIdade()+" anos (ID: "+pet.getId()+") - ");
                     System.out.println((pet.isLimpo() ? "Limpo e" : "Sujo e") + (pet.isSaudavel() ? " Saudável" : " Doente"));
                 }
             }
