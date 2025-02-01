@@ -1,5 +1,4 @@
 package com.clinica.model;
-
 public class Tutor {
     private String nome;
     private String email;
