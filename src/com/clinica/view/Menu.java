@@ -232,7 +232,7 @@ public class Menu {
             switch(opcao){
                 case 1:
                     tutorLogado.exibirPerfil();
-                    System.out.println("\nPressione a tecla ENTER para retornar ao menu anterior...");
+                    System.out.print("\nPressione a tecla ENTER para retornar ao menu anterior...");
                     leitura.nextLine();
                     break;
                 case 2:
@@ -248,13 +248,13 @@ public class Menu {
                     exibirAnimaisAdocao(animais);
                     
                     if (temAnimaisDisponiveis(animais)) {
-                        System.out.println("________________________________________");
-                        System.out.println("|                                      |");
-                        System.out.println("| > Deseja adotar um animal agora?     |");
-                        System.out.println("|                                      |");
-                        System.out.println("| 1. Sim                               |");
-                        System.out.println("| 0. Não                               |");
-                        System.out.println("|______________________________________|");
+                        System.out.println("__________________________");
+                        System.out.println("|                         |");
+                        System.out.println("| > Adotar um animal?     |");
+                        System.out.println("|                         |");
+                        System.out.println("| 1. Sim                  |");
+                        System.out.println("| 0. Não                  |");
+                        System.out.println("|_________________________|");
                         System.out.print("\n> Escolha uma opção: ");
                         opcaoAdocao = leitura.nextInt();
                     
@@ -275,13 +275,13 @@ public class Menu {
                                 }
                     
                                 if (!existe) {
-                                    System.out.println("\nO ID digitado não existe! Tente novamente.");
+                                    System.out.println("O ID digitado não existe! Tente novamente.");
                                     continue;
                                 }
                     
                                 disponivel = disponivelAdotar(animais, id);
                                 if (!disponivel) {
-                                    System.out.println("\nEste pet não está disponível para adoção! Escolha outro.");
+                                    System.out.println("Este pet não está disponível para adoção! Escolha outro.");
                                 }
                     
                             } while (!existe || !disponivel);
@@ -298,7 +298,7 @@ public class Menu {
                     }
                     System.out.println("\nSEUS PETS");
                     exibirAnimaisDoTutor(tutorLogado, animais);
-                    System.out.println("\nPressione a tecla ENTER para retornar ao menu anterior...");
+                    System.out.print("\nPressione a tecla ENTER para retornar ao menu anterior...");
                     leitura.nextLine();
                     break;
                 case 5:
@@ -344,12 +344,12 @@ public class Menu {
                             case 1:
                                 animalParaAlterar.setLimpo(false);
                                 animaisSujos.add(animalParaAlterar);
-                                System.out.println("Você alterou o estado do seu pet para sujo!");
+                                System.out.println(animalParaAlterar.getNome()+" agora aguarda limpeza!");
                                 break;
                             case 2:
                                 animalParaAlterar.setSaudavel(false);
                                 animaisDoentes.add(animalParaAlterar);
-                                System.out.println("Você alterou o estado do seu pet para doente!");
+                                System.out.println(animalParaAlterar.getNome()+" agora aguarda tratamento médico!");
                                 break;
                             default:
                                 System.out.println("\nOpção inválida");
@@ -388,7 +388,7 @@ public class Menu {
                 pet.exibirFoto();
             }
         }
-        System.out.println("\nPressione a tecla ENTER para retornar ao menu anterior...");
+        System.out.print("\nPressione a tecla ENTER para retornar ao menu anterior...");
         leitura.nextLine();
     }
 
@@ -438,7 +438,7 @@ public class Menu {
                 case 1:
                     if(animaisSujos.isEmpty()){
                         System.out.println("\nNão há animais para dar banho ou tosar agora");
-                        System.out.println("\nPressione a tecla ENTER para retornar ao menu anterior...");
+                        System.out.print("\nPressione a tecla ENTER para retornar ao menu anterior...");
                         leitura.nextLine();
                     }else{
                         System.out.println("________________________________________________");
@@ -452,15 +452,15 @@ public class Menu {
                             System.out.printf("| %-15s | %-12s | %-5d | %-4d |\n", 
                             petSujo.getNome(), petSujo.getClass().getSimpleName(), petSujo.getIdade(), petSujo.getId());
                         }
-                        System.out.println("|_______________________________________________|");
-                        System.out.println("\nPressione a tecla ENTER para retornar ao menu anterior...");
+                        System.out.println("|_________________|______________|_______|______|");
+                        System.out.print("\nPressione a tecla ENTER para retornar ao menu anterior...");
                         leitura.nextLine();
                     }
                     break;
                 case 2:
                     if(animaisSujos.isEmpty()){
                         System.out.println("\nNão há animais para dar banho ou tosar agora");
-                        System.out.println("\nPressione a tecla ENTER para retornar ao menu anterior...");
+                        System.out.print("\nPressione a tecla ENTER para retornar ao menu anterior...");
                         leitura.nextLine();
                     }else{
                         System.out.println("\nATENDIMENTO");
@@ -478,8 +478,13 @@ public class Menu {
                     break;
                 case 3:
                     groomer.exibirPerfil();
-                    System.out.println("\nPressione a tecla ENTER para retornar ao menu anterior...");
+                    System.out.print("\nPressione a tecla ENTER para retornar ao menu anterior...");
                     leitura.nextLine();
+                    break;
+                case 0:
+                    break;
+                default:
+                    System.out.println("Opção inválida");
                     break;
             }
 
@@ -506,7 +511,7 @@ public class Menu {
                 case 1:
                     if (animaisDoentes.isEmpty()) {
                         System.out.println("\nNão há animais aguardando tratamento agora.");
-                        System.out.println("\nPressione a tecla ENTER para retornar ao menu anterior...");
+                        System.out.print("\nPressione a tecla ENTER para retornar ao menu anterior...");
                         leitura.nextLine();
                     } else {
                         System.out.println("________________________________________________");
@@ -520,17 +525,15 @@ public class Menu {
                             System.out.printf("| %-15s | %-12s | %-5d | %-4d |\n", 
                             petDoente.getNome(), petDoente.getClass().getSimpleName(), petDoente.getIdade(), petDoente.getId());
                         }
-                        System.out.println("|_______________________________________________|");
-                        System.out.println("\nPressione a tecla ENTER para retornar ao menu anterior...");
+                        System.out.println("|_________________|______________|_______|______|");
+                        System.out.print("\nPressione a tecla ENTER para retornar ao menu anterior...");
                         leitura.nextLine();
                     }   
-                break;
-    
-                   
+                    break;
                 case 2:
                     if (animaisDoentes.isEmpty()) {
                         System.out.println("\nNão há animais aguardando tratamento agora.");
-                        System.out.println("\nPressione a tecla ENTER para retornar ao menu anterior...");
+                        System.out.print("\nPressione a tecla ENTER para retornar ao menu anterior...");
                         leitura.nextLine();
                     } else {
                         System.out.println("\nATENDIMENTO");
@@ -543,8 +546,13 @@ public class Menu {
                     break;
                 case 3:
                     veterinario.exibirPerfil();
-                    System.out.println("\nPressione a tecla ENTER para retornar ao menu anterior...");
+                    System.out.print("\nPressione a tecla ENTER para retornar ao menu anterior...");
                     leitura.nextLine();
+                    break;
+                case 0:
+                    break;
+                default:
+                    System.out.println("Opção inválida");
                     break;
             }
         } while (opcao != 0);
@@ -564,7 +572,7 @@ public class Menu {
             }
         }
         clearBuffer(leitura);
-        System.out.println("\nPressione a tecla ENTER para retornar ao menu anterior...");
+        System.out.print("\nPressione a tecla ENTER para retornar ao menu anterior...");
         leitura.nextLine();
     }
 
@@ -620,7 +628,7 @@ public class Menu {
         if (tutorTemAnimal(tutor, animais)) {
             System.out.println("_______________________________________________________________________");
             System.out.println("|                                                                     |");
-            System.out.println("|                     Animais do Tutor                                |");
+            System.out.println("|                            Animais do Tutor                         |");
             System.out.println("|_____________________________________________________________________|");
             System.out.printf("| %-15s | %-12s | %-5s | %-5s | %-18s |\n", "Nome", "Espécie", "Idade", "ID", "Estado");
             System.out.println("|-----------------|--------------|-------|-------|--------------------|");
@@ -632,9 +640,9 @@ public class Menu {
                         pet.getNome(), pet.getClass().getSimpleName(), pet.getIdade(), pet.getId(), estado);
                 }
             }
-            System.out.println("|_____________________________________________________________________|");
+            System.out.println("|_________________|______________|_______|_______|____________________|");
         } else {
-            System.out.println("\nNão há animais cadastrados");
+            System.out.println("Não há animais cadastrados");
         }
     }
     
@@ -656,7 +664,7 @@ public class Menu {
                         pet.getNome(), pet.getClass().getSimpleName(), pet.getIdade(), pet.getId());
                 }
             }
-            System.out.println("|________________________________________________|");
+            System.out.println("|_________________|______________|_______|_______|");
         } else {
             System.out.println("\nNão há animais disponíveis para adotar.");
         }
@@ -762,6 +770,8 @@ public class Menu {
                     System.out.println("\n>> ANIMAIS PARA ADOÇÃO");
                     exibirAnimaisAdocao(animais);
                     listarColaboradores(colaboradores);
+                    break;
+                case 0:
                     break;
                 default:
                     System.out.println("\nOpção inválida. Tente novamente.");
