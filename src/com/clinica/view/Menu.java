@@ -472,8 +472,8 @@ public class Menu {
                         } else {
                             System.out.println("\nVocê deu banho em " + pet.getNome());
                         }
-                        pet.exibirFoto();
                         pet.som();
+                        pet.exibirFoto();
                     }
                     break;
                 case 3:
@@ -537,8 +537,8 @@ public class Menu {
                         Animal pet = animaisDoentes.remove(0);
                         pet.setSaudavel(true);
                         System.out.println("\nVocê tratou " + pet.getNome() + "!");
-                        pet.exibirFoto();
                         pet.som();
+                        pet.exibirFoto();
                     }
                     break;
                 case 3:
