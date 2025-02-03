@@ -25,7 +25,7 @@ git clone https://github.com/gabrielalb5/clinica-pets.git
 
 2. Abra o projeto no VS Code ou em uma IDE compatível.
 3. acesse a pasta src/com/clinica
-4. Compile e execute a classe Main.java.
+4. Compile e execute a classe Main.java
 5. Navegue pelo menu e utilize as funcionalidades disponíveis.
 
 ### 🧑‍💻 Autores
