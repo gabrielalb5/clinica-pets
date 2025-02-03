@@ -246,49 +246,58 @@ public class Menu {
                     int opcaoAdocao;
                     System.out.println("\nANIMAIS DISPONÍVEIS PARA ADOÇÃO");
                     exibirAnimaisAdocao(animais);
-                    
+
                     if (temAnimaisDisponiveis(animais)) {
-                        System.out.println("__________________________");
-                        System.out.println("|                         |");
-                        System.out.println("| > Adotar um animal?     |");
-                        System.out.println("|                         |");
-                        System.out.println("| 1. Sim                  |");
-                        System.out.println("| 0. Não                  |");
-                        System.out.println("|_________________________|");
-                        System.out.print("\n> Escolha uma opção: ");
-                        opcaoAdocao = leitura.nextInt();
-                    
-                        while (opcaoAdocao == 1) {
-                            int id;
-                            boolean disponivel = false;
-                            boolean existe = false;
-                            do {
-                                System.out.print("\nDigite o ID do pet que deseja adotar: ");
-                                id = leitura.nextInt();
-                    
-                                existe = false;
-                                for (Animal pet : animais) {
-                                    if (pet.getId() == id) {
-                                        existe = true;
-                                        break;
-                                    }
-                                }
-                    
-                                if (!existe) {
-                                    System.out.println("O ID digitado não existe! Tente novamente.");
-                                    continue;
-                                }
-                    
-                                disponivel = disponivelAdotar(animais, id);
-                                if (!disponivel) {
-                                    System.out.println("Este pet não está disponível para adoção! Escolha outro.");
-                                }
-                    
-                            } while (!existe || !disponivel);
-                    
-                            adotar(tutorLogado, animais, id);
-                            opcaoAdocao = 0; 
-                        }
+                        do{
+                            System.out.println("__________________________");
+                            System.out.println("|                         |");
+                            System.out.println("| > Adotar um animal?     |");
+                            System.out.println("|                         |");
+                            System.out.println("| 1. Sim                  |");
+                            System.out.println("| 0. Não                  |");
+                            System.out.println("|_________________________|");
+                            System.out.print("\n> Escolha uma opção: ");
+                            opcaoAdocao = leitura.nextInt();
+                        
+                            switch(opcaoAdocao){
+                                case 1:
+                                    int id;
+                                    boolean disponivel = false;
+                                    boolean existe = false;
+                                    do {
+                                        System.out.print("\nDigite o ID do pet que deseja adotar: ");
+                                        id = leitura.nextInt();
+                            
+                                        existe = false;
+                                        for (Animal pet : animais) {
+                                            if (pet.getId() == id) {
+                                                existe = true;
+                                                break;
+                                            }
+                                        }
+                            
+                                        if (!existe) {
+                                            System.out.println("O ID digitado não existe! Tente novamente.");
+                                            continue;
+                                        }
+                            
+                                        disponivel = disponivelAdotar(animais, id);
+                                        if (!disponivel) {
+                                            System.out.println("Este pet não está disponível para adoção! Escolha outro.");
+                                        }
+                            
+                                    } while (!existe || !disponivel);
+                            
+                                    adotar(tutorLogado, animais, id);
+                                    opcaoAdocao = 0;
+                                    break;
+                                case 0:
+                                    break;
+                                default:
+                                    System.out.println("Opção inválida!");
+                                    break;
+                            }
+                        }while(opcaoAdocao != 0);
                     }
                     break;
                 case 4:

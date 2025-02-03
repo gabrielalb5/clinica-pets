@@ -18,23 +18,24 @@ public class Main {
 
         Menu menu = new Menu(tutores, animais, colaboradores);
 
-        Colaborador g1 = new Groomer("Gabriel", "450", "1234");
-        Colaborador v1 = new Veterinario("Caio", "400", "1234");
-        Tutor t1 = new Tutor("Otavio", "otavio@mail.com", "0665", "Boa Esperança", "6666");
-        Tutor t2 = new Tutor("Lucas", "lucas@mail.com", "5678", "São Paulo", "1234");
-        Tutor t3 = new Tutor("Mariana", "mariana@mail.com", "9876", "Rio de Janeiro", "4321");
-        Tutor t4 = new Tutor("Julia", "julia@mail.com", "2468", "Belo Horizonte", "8765");
-        Animal a1 = new Gato("Bruno", 2, t2);
-        Animal a2 = new Cachorro("Zeca", 5);
-
+        Colaborador v1 = new Veterinario("Vitor", "020", "2222");
+        Colaborador g1 = new Groomer("Giulia", "010", "1111");
         colaboradores.add(g1);
         colaboradores.add(v1);
+
+        Tutor t1 = new Tutor("Gabriel", "gabriel@mail.com", "450", "Av. Yolanda 98", "5555");
+        Tutor t2 = new Tutor("Ana", "ana@mail.com", "300", "Rua Universal 515", "2222");
+        Tutor t3 = new Tutor("Eduardo", "edu@mail.com", "270", "Av. Hortências 17", "7777");
         tutores.add(t1);
         tutores.add(t2);
         tutores.add(t3);
-        tutores.add(t4);
+
+        Animal a1 = new Cachorro("Marley", 1, t2);
+        Animal a2 = new Gato("Luke", 5, t1);
+        Animal a3 = new Coelho("Lunes", 2);
         animais.add(a1);
         animais.add(a2);
+        animais.add(a3);
 
         menu.menuInicial(tutores, colaboradores, animais, animaisSujos, animaisDoentes);
     }
