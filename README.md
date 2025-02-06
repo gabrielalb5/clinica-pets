@@ -1,8 +1,8 @@
-## 🐇 Pet Repete - Clínica de Animais</h2>
+# 🐇 Pet Repete - Clínica de Animais
 
 A "Clínica Pet Repete" é um sistema desenvolvido como trabalho final da disciplina de Introdução à Orientação a objetos (INOO). O sistema gerencia informações sobre animais e seus respectivos tutores, oferecendo funcionalidades de cadastro, adoção e atendimento, como banho, tosa e veterinário.
 
-### ⚙️ Funcionalidades
+## ⚙️ Funcionalidades
 
 - Adoção de animais
 - Atendimento veterinário
@@ -10,12 +10,12 @@ A "Clínica Pet Repete" é um sistema desenvolvido como trabalho final da discip
 - Cadastro de tutores, colaboradores e animais
 - Listagem de tutores, colaboradores e animais
 
-### 🛠️ Tecnologias e Ferramentas</h2>
+## 🛠️ Tecnologias e Ferramentas</h2>
 
 - Java 21.0.4 ☕
 - Programação Orientada a Objetos 🏗️
 
-### ▶️ Como Executar o Projeto
+## ▶️ Como Executar o Projeto
 
 1. Clone o repositório:
 
@@ -28,7 +28,7 @@ git clone https://github.com/gabrielalb5/clinica-pets.git
 4. Compile e execute a classe Main.java
 5. Navegue pelo menu e utilize as funcionalidades disponíveis.
 
-### 🧑‍💻 Autores
+## 🧑‍💻 Autores
 
 - <a href="https://www.linkedin.com/in/ana-l%C3%ADgia-silva-a59779206/">Ana Ligia Silva</a>
 - <a href="https://www.linkedin.com/in/eduardo-bonifacio-0a802b2a8/">Eduardo Bonifacio</a>
